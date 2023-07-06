@@ -47,17 +47,18 @@ Ketentuan :
 }
 ```
 
-    Ketentuan : Masukkan username dan password yang telah terdaftar di database.
-    - Contoh Respon    : 200 OK
+Ketentuan : Masukkan username dan password yang telah terdaftar di database.
+- Contoh Respon    : 200 OK
+
 ```json 
 {
     "Message": "Token JWT disimpan dalam cookie 'token'"
 }
 ```
 
-    Ambil token pada cookie dengan nama token untuk otorisasi
+Ambil token pada cookie dengan nama token untuk otorisasi
     
-    - Authorization :Endpoint ini tidak memerlukan otorisasi.
+- Authorization :Endpoint ini tidak memerlukan otorisasi.
 
 3. Create Author 
     - Deskripsi : Endpoint ini digunakan untuk menambahkan penulis ke database.
@@ -73,12 +74,12 @@ Ketentuan :
 ```
 
 Ketentuan : 
-    - name tidak boleh mengandung karakter "!", "@", "#", "$" dan "%"
-    - name harus terdiri dari jumlah karakter lebih dari 3 dan kurang dari 20
-    - country harus valid berdasarkan data negara internasional terbaru
-    - book tidak boleh diinput dua kali
-    - semua variabel diatas harus diisi
-    - Contoh Respon    : 200 OK .
+- name tidak boleh mengandung karakter "!", "@", "#", "$" dan "%"
+- name harus terdiri dari jumlah karakter lebih dari 3 dan kurang dari 20
+- country harus valid berdasarkan data negara internasional terbaru
+- book tidak boleh diinput dua kali
+- semua variabel diatas harus diisi
+- Contoh Respon    : 200 OK .
 ```json 
 {
 
@@ -149,12 +150,13 @@ Ketentuan :
 ```
 
 Ketentuan : 
-    - name tidak boleh mengandung karakter "!", "@", "#", "$" dan "%"
-    - name harus terdiri dari jumlah karakter lebih dari 3 dan kurang dari 20
-    - country harus valid berdasarkan data negara internasional terbaru
-    - book tidak boleh diinput dua kali
-    - semua variabel diatas harus diisi
-    - Contoh Respon :   
+- name tidak boleh mengandung karakter "!", "@", "#", "$" dan "%"
+- name harus terdiri dari jumlah karakter lebih dari 3 dan kurang dari 20
+- country harus valid berdasarkan data negara internasional terbaru
+- book tidak boleh diinput dua kali
+- semua variabel diatas harus diisi
+- Contoh Respon :   
+
 ```json 
 {
     "Message": "Data updated successfully." 
@@ -176,14 +178,16 @@ Ketentuan :
     ]
 }
 ```
-    Ketentuan : 
-        - publishedYear tidak boleh lebih kecil dari 1900 dan tidak boleh lebih besar dari tahun sekarang
-        - isbn hanya boleh terdiri dari angka dan tanda -
-        - isbn terdiri dari 10 atau 13 angka
-        - author harus sudah terdaftar di database
-        - author tidak boleh diinput dua kali
-        - semua variabel diatas harus diisi
-        - Contoh Respon    : 200 OK .
+Ketentuan : 
+- publishedYear tidak boleh lebih kecil dari 1900 dan tidak boleh lebih besar dari tahun sekarang
+- isbn hanya boleh terdiri dari angka dan tanda -
+- isbn terdiri dari 10 atau 13 angka
+- author harus sudah terdaftar di database
+- author tidak boleh diinput dua kali
+- semua variabel diatas harus diisi
+    
+    - Contoh Respon    : 200 OK .
+
 ```json 
 {
 "Message": "Data created successfully."
@@ -255,15 +259,16 @@ Ketentuan :
 }
 ```
 
-    Ketentuan : 
-        - publishedYear tidak boleh lebih kecil dari 1900 dan tidak boleh lebih besar dari 
-        tahun sekarang
-        - isbn hanya boleh terdiri dari angka dan tanda -
-        - isbn terdiri dari 10 atau 13 angka
-        - author harus sudah terdaftar di database
-        - author tidak boleh diinput dua kali
-        - semua variabel diatas harus diisi
-        - Contoh Respon :   
+Ketentuan : 
+- publishedYear tidak boleh lebih kecil dari 1900 dan tidak boleh lebih besar dari 
+tahun sekarang
+- isbn hanya boleh terdiri dari angka dan tanda -
+- isbn terdiri dari 10 atau 13 angka
+- author harus sudah terdaftar di database
+- author tidak boleh diinput dua kali
+- semua variabel diatas harus diisi
+
+    - Contoh Respon :   
 ```json 
 {
     "Message": "Data updated successfully."
