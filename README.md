@@ -15,30 +15,24 @@
     - Endpoint  : method POST, http://localhost:8080/library/auth/regist
     - Parameter : Tidak ada parameter yang diperlukan. Namun, data user harus dikirim dalam body request dengan format JSON.
     - Contoh Request    : Content-Type: application/json
-                       
-                        {
-                       
-                            "username" : "elvina",
-                       
-                            "password" : "12345678"
-                       
-                        }
-                       
-                        Ketentuan :  
-                       
-                            - username tidak boleh sama dengan username yang sudah ada dalam database
-                       
-                            - password minimal 8 karakter
-                       
-                            - username dan password harus diisi
+```json 
+{
+    "username" : "elvina",
+    "password" : "12345678"                       
+}
+```
+Ketentuan :  
+- username tidak boleh sama dengan username yang sudah ada dalam database
+- password minimal 8 karakter
+- username dan password harus diisi
     
-    - Contoh Respon    : 200 OK
+- Contoh Respon    : 200 OK
+```json 
+{
+    "Message": "Success Regist"
 
-                        {
-    
-                            "Message": "Success Regist"
-    
-                        }
+}
+```
     - Authorization :Endpoint ini tidak memerlukan otorisasi.
 
 2. Login
@@ -46,25 +40,23 @@
     - Endpoint  : method POST, http://localhost:8080/library/auth/login
     - Parameter : Tidak ada parameter yang diperlukan. Namun, data user harus dikirim dalam body request dengan format JSON.
     - Contoh Request    : Content-Type: application/json
-                        
-                        {
-                        
-                            "username" : "elvina",
-                        
-                            "password" : "12345678"
-                        
-                        }
-                        
-                        Ketentuan : Masukkan username dan password yang telah terdaftar di database.
+```json 
+{
+    "username" : "elvina",
+    "password" : "12345678"
+}
+```
+
+    Ketentuan : Masukkan username dan password yang telah terdaftar di database.
     - Contoh Respon    : 200 OK
-                        
-                        {
-                        
-                            "Message": "Token JWT disimpan dalam cookie 'token'"
-                        
-                        }
-                        
-                        Ambil token pada cookie dengan nama token untuk otorisasi
+```json 
+{
+    "Message": "Token JWT disimpan dalam cookie 'token'"
+}
+```
+
+    Ambil token pada cookie dengan nama token untuk otorisasi
+    
     - Authorization :Endpoint ini tidak memerlukan otorisasi.
 
 3. Create Author 
@@ -72,35 +64,28 @@
     - Endpoint  : method POST, http://localhost:8080/library/author
     - Parameter : Tidak ada parameter yang diperlukan. Namun, data user harus dikirim dalam body request dengan format JSON.
     - Contoh Request    : Content-Type: application/json
-                        
-                        {
-                        
-                            "name" : "elvina fitriani",
-                        
-                            "country" : "indonesia",
-                        
-                            "book" : ["Golang"]
-                        
-                        }
-                        
-                        Ketentuan : 
-                        
-                            - name tidak boleh mengandung karakter "!", "@", "#", "$" dan "%"
-                        
-                            - name harus terdiri dari jumlah karakter lebih dari 3 dan kurang dari 20
-                        
-                            - country harus valid berdasarkan data negara internasional terbaru
-                        
-                            - book tidak boleh diinput dua kali
-                        
-                            - semua variabel diatas harus diisi
+```json 
+{
+    "name" : "elvina fitriani",
+    "country" : "indonesia",
+    "book" : ["Golang"]
+}
+```
+
+Ketentuan : 
+    - name tidak boleh mengandung karakter "!", "@", "#", "$" dan "%"
+    - name harus terdiri dari jumlah karakter lebih dari 3 dan kurang dari 20
+    - country harus valid berdasarkan data negara internasional terbaru
+    - book tidak boleh diinput dua kali
+    - semua variabel diatas harus diisi
     - Contoh Respon    : 200 OK .
-                        
-                        {
-                        
-                            "Message": "Data created successfully."
-                        
-                        }
+```json 
+{
+
+    "Message": "Data created successfully."
+
+}
+```
     - Authorization : Masukkan token ke Authorization type Bearer Token
 
 4. Get All Author 
@@ -109,36 +94,23 @@
     - Parameter : Tidak ada parameter yang diperlukan
     - Authorization : Masukkan token ke Authorization type Bearer Token
     - Contoh Respon    : 200 OK .
-                        
-                        {
-                        
-                            "Authors": [{
-                        
-                                    "ID": 7,
-                        
-                                    "CreatedAt": "2023-07-06T16:08:39.302483+07:00",
-                        
-                                    "UpdatedAt": "2023-07-06T16:08:39.302483+07:00",
-                        
-                                    "DeletedAt": null,
-                        
-                                    "name": "elvina fitriani",
-                        
-                                    "country": "indonesia",
-                        
-                                    "book": [
-                        
-                                        "Golang"
-                        
-                                    ]
-                        
-                                }
-                        
-                            ],
-                        
-                            "Response": "Data retrieved successfully."
-                        
-                        }
+```json 
+{
+    "Authors": [{
+            "ID": 7,
+            "CreatedAt": "2023-07-06T16:08:39.302483+07:00",
+            "UpdatedAt": "2023-07-06T16:08:39.302483+07:00",
+            "DeletedAt": null,
+            "name": "elvina fitriani",
+            "country": "indonesia",
+            "book": [
+                "Golang"
+            ]
+        }
+    ],
+    "Response": "Data retrieved successfully."
+}
+```
 
 5. Get all Books for a specific Author
     - Deskripsi : Endpoint ini digunakan untuk mengambil data semua penulis yang menulis sebuah buku yang diminta.
@@ -146,19 +118,21 @@
     - Parameter : Masukkan nama author yang sudah terdaftar dalam database sebagai parameter
     - Authorization : Masukkan token ke Authorization type Bearer Token
     - Contoh Respon    : 200 OK .
-                        
-                        ["Golang"]
+```json                         
+    ["Golang"]
+```
 
 6. Delete Author
     - Deskripsi : Endpoint ini digunakan untuk menghapus data penulis yang ada dimasukkan ke paramater dari database.
     - Endpoint  : method DELETE, http://localhost:8080/library/author/elvina fitriani
     - Parameter : Masukkan isbn buku yang sudah terdaftar dalam database sebagai parameter
     - Authorization : Masukkan token ke Authorization type Bearer Token
-    - Contoh Respon :   {
-                        
-                            "Response": "Data deleted successfully."
-                        
-                        }
+    - Contoh Respon :   
+```json 
+{
+    "Response": "Data deleted successfully."
+}
+```
 
 7. Update Author
     - Deskripsi : Endpoint ini digunakan untuk update data penulis yang ada dimasukkan ke paramater dari database.
@@ -166,76 +140,56 @@
     - Parameter : Masukkan nama penulis yang sudah terdaftar dalam database sebagai parameter
     - Authorization : Masukkan token ke Authorization type Bearer Token
     - Contoh Request    : Content-Type: application/json
-                        
-                        {
-                        
-                            "name" : "elvina fitriani",
-                        
-                            "country" : "indonesia",
-                        
-                            "book" : ["Backend Golang"]
-                        
-                        }
-                        
-                        Ketentuan : 
-                        
-                            - name tidak boleh mengandung karakter "!", "@", "#", "$" dan "%"
-                        
-                            - name harus terdiri dari jumlah karakter lebih dari 3 dan kurang dari 20
-                        
-                            - country harus valid berdasarkan data negara internasional terbaru
-                        
-                            - book tidak boleh diinput dua kali
-                        
-                            - semua variabel diatas harus diisi
-    - Contoh Respon :   {
-                        
-                            "Message": "Data updated successfully."
-                        
-                        }
+```json                         
+{
+    "name" : "elvina fitriani",
+    "country" : "indonesia",
+    "book" : ["Backend Golang"]
+}
+```
+
+Ketentuan : 
+    - name tidak boleh mengandung karakter "!", "@", "#", "$" dan "%"
+    - name harus terdiri dari jumlah karakter lebih dari 3 dan kurang dari 20
+    - country harus valid berdasarkan data negara internasional terbaru
+    - book tidak boleh diinput dua kali
+    - semua variabel diatas harus diisi
+    - Contoh Respon :   
+```json 
+{
+    "Message": "Data updated successfully." 
+}
+```
 
 8. Create Book 
     - Deskripsi : Endpoint ini digunakan untuk menambahkan buku ke database.
     - Endpoint  : method POST, http://localhost:8080/library/book
     - Parameter : Tidak ada parameter yang diperlukan. Namun, data user harus dikirim dalam body request dengan format JSON.
     - Contoh Request    : Content-Type: application/json
+```json 
+{
+    "title" : "Golang",
+    "publishedYear" : 2023,
+    "isbn" : "1234567890",
+    "author" : [
+        "elvina fitriani"
+    ]
+}
+```
+    Ketentuan : 
+        - publishedYear tidak boleh lebih kecil dari 1900 dan tidak boleh lebih besar dari tahun sekarang
+        - isbn hanya boleh terdiri dari angka dan tanda -
+        - isbn terdiri dari 10 atau 13 angka
+        - author harus sudah terdaftar di database
+        - author tidak boleh diinput dua kali
+        - semua variabel diatas harus diisi
+        - Contoh Respon    : 200 OK .
+```json 
+{
+"Message": "Data created successfully."
+}
+```
 
-                        {
-
-                            "title" : "Golang",
-
-                            "publishedYear" : 2023,
-
-                            "isbn" : "1234567890",
-
-                            "author" : [
-
-                                "elvina fitriani"
-
-                            ]
-
-                        }
-
-                        Ketentuan : 
-
-                            - publishedYear tidak boleh lebih kecil dari 1900 dan tidak boleh lebih besar dari tahun sekarang
-
-                            - isbn hanya boleh terdiri dari angka dan tanda -
-
-                            - isbn terdiri dari 10 atau 13 angka
-
-                            - author harus sudah terdaftar di database
-                            
-                            - author tidak boleh diinput dua kali
-                            
-                            - semua variabel diatas harus diisi
-    - Contoh Respon    : 200 OK .
-                        
-                        {
-                        
-                            "Message": "Data created successfully."
-                        
-                        }
     - Authorization : Masukkan token ke Authorization type Bearer Token
 
 9. Get All Book 
@@ -244,38 +198,24 @@
     - Parameter : Tidak ada parameter yang diperlukan
     - Authorization : Masukkan token ke Authorization type Bearer Token
     - Contoh Respon    : 200 OK .
-                        
-                        {
-                        
-                            "Books": [{
-                        
-                                    "ID": 7,
-                        
-                                    "CreatedAt": "2023-07-06T16:08:39.302483+07:00",
-                        
-                                    "UpdatedAt": "2023-07-06T16:08:39.302483+07:00",
-                        
-                                    "DeletedAt": null,
-                        
-                                    "title" : "Golang",
-                        
-                                    "publishedYear" : 2023,
-                        
-                                    "isbn" : "1234567890",
-                        
-                                    "author" : [
-                        
-                                        "elvina fitriani"
-                        
-                                    ]
-                        
-                                }
-                        
-                            ],
-                        
-                            "Response": "Data retrieved successfully."
-                        
-                        }
+```json                       
+{
+    "Books": [{
+            "ID": 7,
+            "CreatedAt": "2023-07-06T16:08:39.302483+07:00",
+            "UpdatedAt": "2023-07-06T16:08:39.302483+07:00",
+            "DeletedAt": null,
+            "title" : "Golang",
+            "publishedYear" : 2023,
+            "isbn" : "1234567890",
+            "author" : [
+                "elvina fitriani"
+            ]
+        }
+    ],
+    "Response": "Data retrieved successfully."
+}
+```
 
 10. Get all Authors for a specific Book
     - Deskripsi : Endpoint ini digunakan untuk mengambil data semua buku yang ditulis oleh penulis yang diminta.
@@ -289,11 +229,14 @@
     - Endpoint  : method DELETE, http://localhost:8080/library/book
     - Parameter : Masukkan isbn buku yang sudah terdaftar dalam database sebagai parameter
     - Authorization : Masukkan token ke Authorization type Bearer Token
-    - Contoh Respon :   {
-                        
-                            "Response": "Data deleted successfully."
-                        
-                        }
+    - Contoh Respon :   
+```json 
+{
+
+    "Response": "Data deleted successfully."
+
+}
+```
 
 12. Update Book
     - Deskripsi : Endpoint ini digunakan untuk update data buku yang ada dimasukkan ke paramater dari database.
@@ -301,39 +244,28 @@
     - Parameter : Masukkan isbn buku yang sudah terdaftar dalam database sebagai parameter
     - Authorization : Masukkan token ke Authorization type Bearer Token
     - Contoh Request    : Content-Type: application/json
+```json 
+{
+    "title" : "Golang",
+    "publishedYear" : 2023,
+    "isbn" : "1234567890",
+    "author" : [
+        "elvina"
+    ]
+}
+```
 
-                        {
-
-                            "title" : "Golang",
-
-                            "publishedYear" : 2023,
-
-                            "isbn" : "1234567890",
-
-                            "author" : [
-
-                                "elvina"
-
-                            ]
-
-                        }
-
-                        Ketentuan : 
-
-                            - publishedYear tidak boleh lebih kecil dari 1900 dan tidak boleh lebih besar dari 
-                            tahun sekarang
-                            
-                            - isbn hanya boleh terdiri dari angka dan tanda -
-                            
-                            - isbn terdiri dari 10 atau 13 angka
-                            
-                            - author harus sudah terdaftar di database
-                            
-                            - author tidak boleh diinput dua kali
-                            
-                            - semua variabel diatas harus diisi
-    - Contoh Respon :   {
-
-                            "Message": "Data updated successfully."
-
-                        }
+    Ketentuan : 
+        - publishedYear tidak boleh lebih kecil dari 1900 dan tidak boleh lebih besar dari 
+        tahun sekarang
+        - isbn hanya boleh terdiri dari angka dan tanda -
+        - isbn terdiri dari 10 atau 13 angka
+        - author harus sudah terdaftar di database
+        - author tidak boleh diinput dua kali
+        - semua variabel diatas harus diisi
+        - Contoh Respon :   
+```json 
+{
+    "Message": "Data updated successfully."
+}
+```
